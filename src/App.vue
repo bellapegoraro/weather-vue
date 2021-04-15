@@ -1,7 +1,13 @@
 <template>
-  <v-app> </v-app>
+  <v-app>
+    <Header />
+  </v-app>
 </template>
 
 <script>
-export default {};
+import Header from "./components/Header";
+
+export default {
+  components: { Header },
+};
 </script>
