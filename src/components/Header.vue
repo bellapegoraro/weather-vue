@@ -1,18 +1,21 @@
 <template>
   <div id="header">
-    <v-app-bar color="teal lighten-4" class="pt-5" prominent dense>
+    <v-app-bar color="teal lighten-4" class="pt-6" prominent dense>
       <div class="input" flat>
         <v-text-field
           label="Buscar Cidade"
           prepend-inner-icon="mdi-map-marker"
           required
           :rules="rules"
+          v-model="infos.city"
         ></v-text-field>
       </div>
       <div class="select">
-        <v-select :items="items" label="Hora"></v-select>
+        <v-select :items="items" label="Hora" v-model="infos.hour"></v-select>
       </div>
-      <v-btn class="mb-3" text icon><v-icon medium>mdi-magnify</v-icon></v-btn>
+      <v-btn class="mb-3" text icon @click="getWeather()"
+        ><v-icon medium>mdi-magnify</v-icon></v-btn
+      >
     </v-app-bar>
   </div>
 </template>
@@ -31,7 +34,17 @@ export default {
       "21:00:00",
       "00:00:00",
     ],
+    infos: {
+      city: "",
+      hour: "",
+    },
   }),
+  methods: {
+    getWeather() {
+      this.$store.dispatch("weatherStore/getCurrentWeather", this.infos.city);
+      this.$store.dispatch("weatherStore/getFiveDaysWeather", this.infos);
+    },
+  },
 };
 </script>
 
@@ -39,7 +52,7 @@ export default {
 .input {
   width: 20%;
   margin-right: 2%;
-  margin-left: 34%;
+  margin-left: 33%;
 }
 
 .select {
