@@ -49,6 +49,10 @@ export default {
 </script>
 
 <style scoped>
+#header {
+  margin-bottom: 10px;
+}
+
 .input {
   width: 20%;
   margin-right: 2%;
@@ -57,5 +61,16 @@ export default {
 
 .select {
   width: 10%;
+}
+
+@media (max-width: 1100px) {
+  .input {
+    margin-left: 20%;
+    width: 30%;
+  }
+
+  .select {
+    width: 20%;
+  }
 }
 </style>
