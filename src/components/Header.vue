@@ -13,7 +13,11 @@
       <div class="select">
         <v-select :items="items" label="Hora" v-model="infos.hour"></v-select>
       </div>
-      <v-btn class="mb-3" text icon @click="getWeather()"
+      <v-btn
+        class="mb-3"
+        text
+        icon
+        @click="getWeather(), $emit('show', 'Weather')"
         ><v-icon medium>mdi-magnify</v-icon></v-btn
       >
     </v-app-bar>

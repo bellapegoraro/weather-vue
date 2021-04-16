@@ -1,17 +1,26 @@
 <template>
   <v-app>
-    <Header />
-
-    <Weather />
+    <Header @show="show" />
+    <component :is="componentRender" />
   </v-app>
 </template>
 
 <script>
 import Header from "./components/Header";
 import Weather from "./components/Weather";
-// import Home from "./components/Home";
+import Home from "./components/Home";
 
 export default {
-  components: { Header, Weather },
+  data() {
+    return {
+      componentRender: "Home",
+    };
+  },
+  components: { Header, Weather, Home },
+  methods: {
+    show() {
+      this.componentRender = "Weather";
+    },
+  },
 };
 </script>

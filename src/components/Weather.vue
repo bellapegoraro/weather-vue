@@ -1,5 +1,5 @@
 <template>
-  <div id="container" v-if="getCurrentWeather.length !== 0">
+  <div id="container-weather" v-if="getCurrentWeather.length !== 0">
     <Card :weather="getCurrentWeather" />
     <Card v-for="next in getFiveDaysWeather" :key="next.name" :weather="next" />
   </div>
@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style>
-#container {
+#container-weather {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -29,14 +29,14 @@ export default {
 }
 
 @media (max-width: 1000px) {
-  #container {
+  #container-weather {
     justify-content: center;
     width: 80%;
   }
 }
 
 @media (min-width: 1000px) {
-  #container {
+  #container-weather {
     width: 50%;
     justify-content: center;
   }
