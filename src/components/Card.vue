@@ -7,8 +7,8 @@
   >
     <v-list-item two-line>
       <v-list-item-content>
-        <v-list-item-title class="headline" v-if="weather.name"
-          >{{ weather.name }}, agora
+        <v-list-item-title class="headline" v-if="weather.name">
+          {{ weather.name }}, agora
         </v-list-item-title>
         <v-list-item-title class="headline" v-if="weather.dt_txt">
           {{ weather.dt_txt | data }}
@@ -35,8 +35,8 @@
               weather.weather[0].description.replace(/\b\w/g, (l) =>
                 l.toUpperCase()
               )
-            }}</strong
-          >
+            }}
+          </strong>
         </v-col>
         <v-col cols="6">
           <v-img
@@ -45,13 +45,13 @@
             "
             alt="weather image"
             width="80"
-          ></v-img>
+          />
         </v-col>
       </v-row>
     </v-card-text>
     <v-list-item>
       <v-list-item-subtitle> <strong>Umidade:</strong></v-list-item-subtitle>
-      <v-list-item-icon class="mr-4"> </v-list-item-icon>
+      <v-list-item-icon class="mr-4" />
       <v-list-item-subtitle>{{ weather.main.humidity }}%</v-list-item-subtitle>
     </v-list-item>
   </v-card>

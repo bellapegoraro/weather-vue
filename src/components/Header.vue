@@ -3,23 +3,32 @@
     <v-app-bar color="teal lighten-4" class="pt-6" prominent dense>
       <div class="input" flat>
         <v-text-field
+          v-model="infos.city"
           label="Buscar Cidade"
           prepend-inner-icon="mdi-map-marker"
           required
-          :rules="rules"
-          v-model="infos.city"
-        ></v-text-field>
+          :rules="rules.input"
+        />
       </div>
       <div class="select">
-        <v-select :items="items" label="Hora" v-model="infos.hour"></v-select>
+        <v-select
+          v-model="infos.hour"
+          :items="items"
+          label="Hora"
+          required
+          :rules="rules.select"
+        />
       </div>
       <v-btn
         class="mb-3"
         text
         icon
         @click="getWeather(), $emit('show', 'Weather')"
-        ><v-icon medium>mdi-magnify</v-icon></v-btn
       >
+        <v-icon medium>
+          mdi-magnify
+        </v-icon>
+      </v-btn>
     </v-app-bar>
   </div>
 </template>
@@ -27,7 +36,10 @@
 <script>
 export default {
   data: () => ({
-    rules: [(value) => !!value || "Campo obrigatório."],
+    rules: {
+      input: [(value) => !!value || "Campo obrigatório"],
+      select: [(v) => !!v || "Campo obrigatório"],
+    },
     items: [
       "03:00:00",
       "06:00:00",
@@ -52,7 +64,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 #header {
   margin-bottom: 10px;
 }
