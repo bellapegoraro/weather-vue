@@ -10,7 +10,7 @@ import {
 let mock = new MockAdapter(axios);
 
 describe("weatherStore", () => {
-  const { actions, mutations } = weatherStore;
+  const { mutations } = weatherStore;
 
   describe("load data from api", () => {
     it("should load current weather", async () => {
@@ -65,35 +65,35 @@ describe("weatherStore", () => {
     });
   });
 
-  describe("actions", () => {
-    describe("get current weather", () => {
-      const context = {
-        commit: jest.fn(),
-      };
-      it("should commit data from current weather", async () => {
-        await actions.getCurrentWeather(context, "curitiba");
-        expect(context.commit).toHaveBeenCalledWith(
-          "getCurrentWeather",
-          localCurrentWeatherData
-        );
-      });
-    });
+  // describe("actions", () => {
+  //   describe("get current weather", () => {
+  //     const context = {
+  //       commit: jest.fn(),
+  //     };
+  //     it("should commit data from current weather", async () => {
+  //       await actions.getCurrentWeather(context, "curitiba");
+  //       expect(context.commit).toHaveBeenCalledWith(
+  //         "getCurrentWeather",
+  //         localCurrentWeatherData
+  //       );
+  //     });
+  //   });
 
-    describe("get five days weather", () => {
-      const context = {
-        commit: jest.fn(),
-      };
-      const payload = {
-        city: "curitiba",
-        hour: "09:00:00",
-      };
-      it("should commit data from five days weather", async () => {
-        await actions.getFiveDaysWeather(context, payload);
-        expect(context.commit).toHaveBeenCalledWith("getFiveDaysWeather", {
-          response: localFiveDaysWeatherData,
-          payload,
-        });
-      });
-    });
-  });
+  //   describe("get five days weather", () => {
+  //     const context = {
+  //       commit: jest.fn(),
+  //     };
+  //     const payload = {
+  //       city: "curitiba",
+  //       hour: "09:00:00",
+  //     };
+  //     it("should commit data from five days weather", async () => {
+  //       await actions.getFiveDaysWeather(context, payload);
+  //       expect(context.commit).toHaveBeenCalledWith("getFiveDaysWeather", {
+  //         response: localFiveDaysWeatherData,
+  //         payload,
+  //       });
+  //     });
+  //   });
+  // });
 });
