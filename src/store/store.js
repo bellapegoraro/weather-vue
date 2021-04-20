@@ -21,16 +21,12 @@ export default {
   },
   actions: {
     async getCurrentWeather({ commit }, payload) {
-      // const response = await axios.get(
-      //   `https://api.openweathermap.org/data/2.5/weather?q=${payload}&lang=pt_br&units=metric&appid=${process.env.VUE_APP_API_KEY}`
-      // );
-
       const response = await axios.get(
         "https://api.openweathermap.org/data/2.5/weather",
         {
           params: {
             q: payload,
-            lang: "pt_bt",
+            lang: "pt_br",
             units: "metric",
             appid: process.env.VUE_APP_API_KEY,
           },
@@ -40,16 +36,12 @@ export default {
       commit("getCurrentWeather", response.data);
     },
     async getFiveDaysWeather({ commit }, payload) {
-      // const response = await axios.get(
-      //   `https://api.openweathermap.org/data/2.5/forecast?q=${payload.city}&lang=pt_br&units=metric&appid=${process.env.VUE_APP_API_KEY}`
-      // );
-
       const response = await axios.get(
         "https://api.openweathermap.org/data/2.5/forecast",
         {
           params: {
             q: payload.city,
-            lang: "pt_bt",
+            lang: "pt_br",
             units: "metric",
             appid: process.env.VUE_APP_API_KEY,
           },

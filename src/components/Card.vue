@@ -7,10 +7,10 @@
   >
     <v-list-item two-line>
       <v-list-item-content>
-        <v-list-item-title class="headline" v-if="weather.name">
+        <v-list-item-title v-if="weather.name" class="headline">
           {{ weather.name }}, agora
         </v-list-item-title>
-        <v-list-item-title class="headline" v-if="weather.dt_txt">
+        <v-list-item-title v-if="weather.dt_txt" class="headline">
           {{ weather.dt_txt | data }}
         </v-list-item-title>
       </v-list-item-content>
@@ -31,11 +31,7 @@
         </v-col>
         <v-col cols="5">
           <strong>
-            {{
-              weather.weather[0].description.replace(/\b\w/g, (l) =>
-                l.toUpperCase()
-              )
-            }}
+            {{ weather.weather[0].description | description }}
           </strong>
         </v-col>
         <v-col cols="6">
